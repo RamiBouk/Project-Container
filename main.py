@@ -4,16 +4,6 @@
 # In[1]:
 
 
-''
-Variables: 
----------
-
-data : diabetes health indicators original dataset
-X : features dataset
-Y : target labels
-pred : list of predicted labels 
-
-''';
 
 
 # In[2]:
@@ -42,11 +32,11 @@ def classifier(mat, model):
         pred : list of predicted labels
     '''
     if model=='SVM':
-        model = pickle.load(open("SVM.pkl", "rb"))
+        model = pickle.load(open("branch_random_forest.pkl", "rb"))
         pred = model.predict(mat)
         
     elif model=='RF':
-        model = pickle.load(open("branch_random_forest.pkl", "rb"))
+        model = pickle.load(open("SVM.pkl", "rb"))
         pred = model.predict(mat)
         
     elif model=='GBC':
@@ -66,7 +56,8 @@ def classifier(mat, model):
 data = pd.read_csv('data/validation_diabetes_health_indicators.csv')
 data['Diabetes_012'] = data['Diabetes_012'].astype(int)
 
-X = data.drop(columns=['Diabetes_012'])
+X = data.drop(columns=['Diabetes_012','Unnamed: 0'])
+X=X[['GenHlth', 'HighBP', 'BMI', 'DiffWalk', 'HighChol', 'Age', 'HeartDiseaseorAttack', 'PhysHlth', 'Income', 'PhysActivity', 'Education', 'Stroke', 'CholCheck', 'HvyAlcoholConsump', 'Smoker']]
 y = data['Diabetes_012']
 
 
