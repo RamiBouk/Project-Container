@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+    #!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
@@ -42,7 +42,7 @@ def classifier(mat, model):
         pred : list of predicted labels
     '''
     if model=='SVM':
-        model = pickle.load(open("classification_model.pkl", "rb"))
+        model = pickle.load(open("SVM.pkl", "rb"))
         pred = model.predict(mat)
         
     elif model=='RF':
@@ -50,7 +50,7 @@ def classifier(mat, model):
         pred = model.predict(mat)
         
     elif model=='GBC':
-        model = pickle.load(open("classification_model.pkl", "rb"))
+        model = pickle.load(open("GBOOST.pkl", "rb"))
         pred = model.predict(mat)
         
     else:
