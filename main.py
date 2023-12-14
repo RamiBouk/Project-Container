@@ -40,7 +40,7 @@ def classifier(mat, model):
         pred = model.predict(mat)
         
     elif model=='GBC':
-        model = pickle.load(open("GBOOST.pkl", "rb"))
+        model = pickle.load(open("branch_random_forest.pkl", "rb"))
         pred = model.predict(mat)
         
     else:

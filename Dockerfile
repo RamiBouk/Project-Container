@@ -1,4 +1,4 @@
-FROM python:3.8.3-slim 
+FROM python:3.10.12-slim 
 COPY . /app
-RUN pip install -r /app/requirements.txt
-CMD python /app/main.py
+RUN python -m pip install --upgrade pip && pip install -r /app/requirements.txt
+CMD cd app && python /app/main.py
